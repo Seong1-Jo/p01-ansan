@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
-import SearchIconImage from 'assets/images/SearchIcon.svg';
 
 const HContainer = styled.header`
   color: #333;
@@ -27,15 +26,35 @@ const Logo = styled.span`
   margin: auto;
 `;
 const SecondMenuContainer = styled.div``;
-const SecondMenuUl = styled.ul``;
-const SecondMenuLi = styled.li``;
-
-const Search = styled.div``;
-const SearchIcon = styled.div`
-  width: 50px;
-  height: 50px;
-  border: 3px solid red;
-  background-image: url(${SearchIconImage});
+const SecondMenuUl = styled.ul`
+  display: flex;
+`;
+const SecondMenuLi = styled.li`
+  list-style: none;
+  position: relative;
+  ::before {
+    content: '';
+    width: 1px;
+    height: 12px;
+    background-color: #e5e5e5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+  }
+  &:first-child::before {
+    display: none;
+  }
+`;
+const StyleLink = styled(Link)`
+  background-color: white;
+  display: block;
+  padding: 11px 16px;
+  text-decoration: none;
+  color: #666;
+  &:hover {
+    color: #000;
+  }
 `;
 
 function Header() {
@@ -48,16 +67,12 @@ function Header() {
         <SecondMenuContainer>
           <SecondMenuUl>
             <SecondMenuLi>
-              <Link to="/login">로그인</Link>
+              <StyleLink to="/login">로그인</StyleLink>
             </SecondMenuLi>
             <SecondMenuLi>
-              <Link to="/register">회원가입</Link>
+              <StyleLink to="/register">회원가입</StyleLink>
             </SecondMenuLi>
           </SecondMenuUl>
-          <Search>
-            <input type="text" />
-            <SearchIcon />
-          </Search>
         </SecondMenuContainer>
         {/* <ul>
             <li>
