@@ -51,11 +51,13 @@ function MainPage() {
     }
   };
   const SearchFocus = () => {
+    // focus했을때
     if (inputRef.current) {
       inputRef.current.setAttribute('placeholder', '통합검색');
     }
   };
   const SearchBlur = () => {
+    // focus에 때었을때
     if (inputRef.current) {
       inputRef.current.setAttribute('placeholder', '');
     }
