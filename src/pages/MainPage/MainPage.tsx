@@ -1,6 +1,4 @@
 import React, { useRef } from 'react';
-import Header from 'components/Header/Header';
-import Footer from 'components/Footer/Footer';
 
 import styled from 'styled-components';
 import SearchIconImage from 'assets/images/SearchIcon.svg';
@@ -64,13 +62,11 @@ function MainPage() {
   };
   return (
     <Container>
-      <Header />
       메인페이지
       <SearchContainer onClick={SearchClick}>
         <SearchInput ref={inputRef} onFocus={SearchFocus} onBlur={SearchBlur} />
         <SearchIcon color="green" />
       </SearchContainer>
-      <Footer />
     </Container>
   );
 }
