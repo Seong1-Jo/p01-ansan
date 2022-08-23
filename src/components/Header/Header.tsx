@@ -96,9 +96,22 @@ const FirstMenuIi = styled.li`
 
 const FMenuDropItem = styled.div`
   background-color: red;
-  height: 200px;
+  height: 300px;
+  & > ${Inner} {
+    // & > 바로 아래자식에게만적용!
+    font-size: 50px;
+    display: flex;
+  }
 `;
-const DropItem = styled.div``;
+const DropTitle = styled.div`
+  background-color: white;
+`;
+const DropItemUl = styled.ul`
+  background-color: aliceblue;
+  position: absolute;
+  left: 30%;
+  font-size: 30px;
+`;
 
 function Header() {
   return (
@@ -117,18 +130,30 @@ function Header() {
         </SecondMenuUl>
         <FirstMenuUl>
           <FirstMenuIi>
-            <FMenuDropTitle>안산소개</FMenuDropTitle>
+            <FMenuDropTitle>안산</FMenuDropTitle>
             <FMenuDropList>
               <FMenuDropItem>
-                <Inner>a</Inner>
+                <Inner>
+                  <DropTitle>안산</DropTitle>
+                  <DropItemUl>
+                    <li>안산소개</li>
+                    <li>행사</li>
+                  </DropItemUl>
+                </Inner>
               </FMenuDropItem>
             </FMenuDropList>
           </FirstMenuIi>
           <FirstMenuIi>
-            <FMenuDropTitle>안산의대표여행지</FMenuDropTitle>
+            <FMenuDropTitle>여행지</FMenuDropTitle>
             <FMenuDropList>
               <FMenuDropItem>
-                <Inner>b</Inner>
+                <Inner>
+                  <DropTitle>여행지</DropTitle>
+                  <DropItemUl>
+                    <li>호수공원</li>
+                    <li>폭폭호수</li>
+                  </DropItemUl>
+                </Inner>
               </FMenuDropItem>
             </FMenuDropList>
           </FirstMenuIi>
@@ -136,7 +161,14 @@ function Header() {
             <FMenuDropTitle>지역맛집</FMenuDropTitle>
             <FMenuDropList>
               <FMenuDropItem>
-                <Inner>c</Inner>
+                <Inner>
+                  <DropTitle>지역맛집</DropTitle>
+                  <DropItemUl>
+                    <li>고잔동</li>
+                    <li>일동</li>
+                    <li>이동</li>
+                  </DropItemUl>
+                </Inner>
               </FMenuDropItem>
             </FMenuDropList>
           </FirstMenuIi>
