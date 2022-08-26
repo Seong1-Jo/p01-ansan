@@ -24,7 +24,9 @@ const InputPassword = styled.input.attrs({
 })`
   width: 50%;
 `;
-const ButtonLogin = styled.button`
+const ButtonLogin = styled.button.attrs({
+  type: 'submit',
+})`
   width: 50%;
 `;
 function LoginPage() {
@@ -36,15 +38,16 @@ function LoginPage() {
   const LoginPwChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginPw(e.target.value);
   };
-  const LoginClick = () => {
+  const LoginOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log(loginId, loginPw);
   };
   return (
     <LoginContainer>
-      <FormLogin>
+      <FormLogin onSubmit={LoginOnSubmit}>
         <InputLogin value={loginId} onChange={LoginIdChange} />
         <InputPassword value={loginPw} onChange={LoginPwChange} />
-        <ButtonLogin onClick={LoginClick}>로그인</ButtonLogin>
+        <ButtonLogin>로그인</ButtonLogin>
       </FormLogin>
     </LoginContainer>
   );
