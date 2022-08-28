@@ -3,14 +3,15 @@ import styled from 'styled-components';
 
 const LoginContainer = styled.div`
   margin: 0 auto; //가운데 정렬
+  display: flex;
+  flex-direction: column;
 `;
 
 const FormLogin = styled.form`
+  //회원가입 스타일 컴포넌트와 겹침!
   border: 2px solid blue;
   /* width: 800px; */
   height: 500px;
-  display: flex;
-  flex-direction: column;
 `;
 const InputLogin = styled.input.attrs({
   type: 'email',
