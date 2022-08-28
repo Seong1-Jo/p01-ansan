@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const RegisterContainer = styled.div`
@@ -27,11 +27,27 @@ const InputRegister = styled.input`
 `;
 
 function RegisterPage() {
+  const [registerId, setRegisterId] = useState<string>('');
+
+  const IdChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterId(e.target.value);
+  };
+
+  const RegisterOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(registerId);
+  };
+
   return (
     <RegisterContainer>
-      <FormRegister>
+      <FormRegister onSubmit={RegisterOnSubmit}>
         <InputRegister type="text" placeholder="이름" />
-        <InputRegister type="email" placeholder="아이디" />
+        <InputRegister
+          type="email"
+          placeholder="아이디"
+          value={registerId}
+          onChange={IdChangeHandler}
+        />
         <InputRegister type="password" placeholder="비밀번호" />
         <InputRegister type="password" placeholder="비밀번호 확인" />
         <ButtonRegister>회원가입</ButtonRegister>
