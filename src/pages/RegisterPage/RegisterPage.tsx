@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 
 const RegisterContainer = styled.div`
@@ -27,29 +27,99 @@ const InputRegister = styled.input`
 `;
 
 function RegisterPage() {
+  const [registerName, setRegisterName] = useState<string>('');
   const [registerId, setRegisterId] = useState<string>('');
+  const [registerPw, setRegisterPw] = useState<string>('');
+  const [registerPwCheck, setRegisterPwCheck] = useState<string>('');
+
+  const FocusName = useRef<HTMLInputElement>(null);
+  const FocusId = useRef<HTMLInputElement>(null);
+  const FocusPw = useRef<HTMLInputElement>(null);
+  const FocusPwCheck = useRef<HTMLInputElement>(null);
+
+  const NameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterName(e.target.value);
+  };
 
   const IdChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRegisterId(e.target.value);
   };
 
+  const PwChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterPw(e.target.value);
+    console.log('비밀번호 렌더링중');
+  };
+  const PwCheckChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterPwCheck(e.target.value);
+    console.log('비밀번호확인 렌더링중');
+  };
   const RegisterOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(registerId);
+    console.log('focusname', FocusName);
+    console.log('focusid', FocusId);
+    switch (true) {
+      case registerName === '':
+        alert('이름입력하세요');
+        FocusName.current?.focus();
+        break;
+      case registerId === '':
+        alert('아이디를 입력하세요');
+        FocusId.current?.focus();
+        break;
+      case registerPw === '':
+        alert('비밀번호 입력하세요');
+        FocusPw.current?.focus();
+        break;
+      case registerPwCheck === '':
+        alert('비밀번호확인 입력하세요');
+        FocusPwCheck.current?.focus();
+        break;
+      default:
+        if (registerPw === registerPwCheck) {
+          console.log('비밀번호 일치');
+        } else {
+          console.log('비밀번호 불일치');
+        }
+    }
+
+    // if (registerPw === registerPwCheck) {
+    //   console.log('비밀번호 일치');
+    // } else {
+    //   console.log('비밀번호 불일치');
+    // }
   };
 
   return (
     <RegisterContainer>
       <FormRegister onSubmit={RegisterOnSubmit}>
-        <InputRegister type="text" placeholder="이름" />
         <InputRegister
+          ref={FocusName}
+          type="text"
+          placeholder="이름"
+          value={registerName}
+          onChange={NameChangeHandler}
+        />
+        <InputRegister
+          ref={FocusId}
           type="email"
           placeholder="아이디"
           value={registerId}
           onChange={IdChangeHandler}
         />
-        <InputRegister type="password" placeholder="비밀번호" />
-        <InputRegister type="password" placeholder="비밀번호 확인" />
+        <InputRegister
+          ref={FocusPw}
+          type="text"
+          placeholder="비밀번호"
+          value={registerPw}
+          onChange={PwChangeHandler}
+        />
+        <InputRegister
+          ref={FocusPwCheck}
+          type="text"
+          placeholder="비밀번호 확인"
+          value={registerPwCheck}
+          onChange={PwCheckChangeHandler}
+        />
         <ButtonRegister>회원가입</ButtonRegister>
       </FormRegister>
     </RegisterContainer>
