@@ -60,19 +60,27 @@ function RegisterPage() {
     switch (true) {
       case registerName === '':
         alert('이름입력하세요');
-        FocusName.current?.focus();
+        if (FocusName.current !== null) {
+          FocusName.current.focus();
+        }
         break;
       case registerId === '':
         alert('아이디를 입력하세요');
-        FocusId.current?.focus();
+        if (FocusId.current !== null) {
+          FocusId.current.focus();
+        }
         break;
       case registerPw === '':
         alert('비밀번호 입력하세요');
-        FocusPw.current?.focus();
+        if (FocusPw.current !== null) {
+          FocusPw.current.focus();
+        }
         break;
       case registerPwCheck === '':
         alert('비밀번호확인 입력하세요');
-        FocusPwCheck.current?.focus();
+        if (FocusPwCheck.current !== null) {
+          FocusPwCheck.current.focus();
+        }
         break;
       default:
         if (registerPw === registerPwCheck) {
@@ -81,12 +89,6 @@ function RegisterPage() {
           console.log('비밀번호 불일치');
         }
     }
-
-    // if (registerPw === registerPwCheck) {
-    //   console.log('비밀번호 일치');
-    // } else {
-    //   console.log('비밀번호 불일치');
-    // }
   };
 
   return (
