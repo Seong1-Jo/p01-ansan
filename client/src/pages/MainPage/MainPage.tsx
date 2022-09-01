@@ -1,4 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+
+import axios from 'axios';
 
 import styled from 'styled-components';
 import SearchIconImage from 'assets/images/SearchIcon.svg';
@@ -42,6 +44,11 @@ const SearchIcon = styled.div<{ color: string }>`
 `;
 
 function MainPage() {
+
+  useEffect(() => {
+    axios.get('/api/hello')
+    .then(res => console.log(res))
+  },[])
   const inputRef = useRef<HTMLInputElement>(null);
   const SearchClick = () => {
     if (inputRef.current) {
