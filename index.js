@@ -29,6 +29,11 @@ app.get('/', (req, res) => {
   res.send('안녕 반가워요이곳이에요');
 });
 
+
+app.get('/api/hello', (req, res) => {
+  res.send('뭐지묘요asda요요dd요요');
+});
+
 /* 회원가입 */
 
 app.post('/api/users/register', (req, res) => {
