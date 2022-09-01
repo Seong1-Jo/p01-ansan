@@ -13,7 +13,7 @@ let auth = (req, res, next) => {
     if(err) throw err;
     if(!user) return res.json({ isAuth: false, error: true })
 
-    req.token = token;
+    req.token = token; //해주면index.js Auth부분에서 가져가서 사용할수있다
     req.user = user;
     next(); //넣어주는 이유는 미들웨이기떄문에 다했으면 다음 으로 갈수있게
   })

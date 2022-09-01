@@ -37,18 +37,19 @@ const userSchema = mongoose.Schema({
   },
 });
 
-userSchema.pre("save", function (next) {
+/*암호화기능 부분 */
+userSchema.pre("save", function (next) { //index.js에 줄36에 줄37에 있는 회원정보를 저장하기 전에 하는 함수!
   var user = this;
 
-  if (user.isModified("password")) {
+  if (user.isModified("password")) { //암호변환될때만 실행한다는 조건
     //비밀번호를 암호화 시킨다.
     bcrypt.genSalt(saltRounds, function (err, salt) {
-      if (err) return next(err);
+      if (err) return next(err); //next하면 index.js 줄36로 보내준다
 
-      bcrypt.hash(user.password, salt, function (err, hash) {
+      bcrypt.hash(user.password, salt, function (err, hash) { //플레인 password, hash는 암호화된비밀번호
         if (err) return next(err);
         user.password = hash;
-        next();
+        next();// 돌아간다
       });
     });
   } else {
@@ -84,7 +85,9 @@ userSchema.methods.generateToken = function (cb) {
   });
 };
 
-userSchema.statics.findByToken = function (token, cb) {
+/*복호화 */
+
+userSchema.statics.findByToken = function (token, cb) { 
   var user = this;
   // console.log("user:", user);
   // console.log("token", token);
