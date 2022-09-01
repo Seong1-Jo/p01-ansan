@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const LoginContainer = styled.div`
   margin: 0 auto; //가운데 정렬
@@ -42,6 +43,13 @@ function LoginPage() {
   const LoginOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(loginId, loginPw);
+    let body = {
+      email: loginId,
+      password: loginPw,
+    };
+    axios.post('/api/users/login', body).then((res) => {
+      console.log(res);
+    });
   };
   return (
     <LoginContainer>
