@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const RegisterContainer = styled.div`
   border: 2px solid red;
@@ -27,6 +29,8 @@ const InputRegister = styled.input`
 `;
 
 function RegisterPage() {
+  const navigate = useNavigate();
+
   const [registerName, setRegisterName] = useState<string>('');
   const [registerId, setRegisterId] = useState<string>('');
   const [registerPw, setRegisterPw] = useState<string>('');
@@ -83,8 +87,22 @@ function RegisterPage() {
         }
         break;
       default:
-        if (registerPw === registerPwCheck) {
+        if (registerPw === registerPwCheck) { //비밀번호 일치시
+          let body = {
+            name: registerName,
+            email: registerId,
+            password: registerPw
+          }
           console.log('비밀번호 일치');
+          axios.post('/api/users/register', body)
+          .then((res) => {
+            if(res.data.success){
+              navigate('/login');
+            } else{
+              console.log('회원가입실패');
+              console.log(res);
+            }
+          })
         } else {
           console.log('비밀번호 불일치');
         }
@@ -110,14 +128,14 @@ function RegisterPage() {
         />
         <InputRegister
           ref={FocusPw}
-          type="text"
+          type="password"
           placeholder="비밀번호"
           value={registerPw}
           onChange={PwChangeHandler}
         />
         <InputRegister
           ref={FocusPwCheck}
-          type="text"
+          type="password"
           placeholder="비밀번호 확인"
           value={registerPwCheck}
           onChange={PwCheckChangeHandler}
