@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -32,6 +34,7 @@ const ButtonLogin = styled.button.attrs({
   width: 50%;
 `;
 function LoginPage() {
+  const navigate = useNavigate();
   const [loginId, setLoginId] = useState<string>('');
   const [loginPw, setLoginPw] = useState<string>('');
   const LoginIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,8 +50,13 @@ function LoginPage() {
       email: loginId,
       password: loginPw,
     };
-    axios.post('/api/users/login', body).then((res) => {
-      console.log(res);
+    axios.post('/api/users/login', body)
+    .then((res) => {
+      if(res.data.loginSuccess){
+        navigate('/');
+      }else {
+        console.log('로그인실패');
+      }
     });
   };
   return (
