@@ -1,11 +1,26 @@
 import React, { useEffect, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar } from 'swiper'; 
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 import axios from 'axios';
-
 import styled from 'styled-components';
+
 import SearchIconImage from 'assets/images/SearchIcon.svg';
 
 import { Container } from 'styles/Common';
+
+const StyledSwiper = styled(Swiper)`
+   /* width: 100px; */
+  height: 100px; 
+  background-color: silver;
+  /* direction: 'vertical'; */
+`;
 
 const SearchContainer = styled.div`
   display: flex;
@@ -69,6 +84,25 @@ function MainPage() {
   };
   return (
     <Container>
+      <StyledSwiper
+        modules={[Navigation, Pagination, Scrollbar]}
+        spaceBetween={1}
+        slidesPerView={1}
+        // onSlideChange={() => console.log('슬라이드')}
+        navigation
+        // pagination={{clickable: true}}
+        // scrollbar={{ draggable: true }}
+        direction='vertical'
+      >
+        <SwiperSlide>slide 1</SwiperSlide>
+        <SwiperSlide>slide 2</SwiperSlide>
+        <SwiperSlide>slide 3</SwiperSlide>
+        <SwiperSlide>slide 4</SwiperSlide>
+        <SwiperSlide>slide 3</SwiperSlide>
+        <SwiperSlide>slide 4</SwiperSlide>
+        <SwiperSlide>slide 3</SwiperSlide>
+        <SwiperSlide>slide 4</SwiperSlide>
+      </StyledSwiper>
       메인페이지
       <SearchContainer onClick={SearchClick}>
         <SearchInput ref={inputRef} onFocus={SearchFocus} onBlur={SearchBlur} />
