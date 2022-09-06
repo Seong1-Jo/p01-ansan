@@ -5,6 +5,8 @@ export const Container = styled.div`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+  position: relative;
+  /* margin-top: 160px; */
 `;
 
 export const ImgCommon = styled.img`
