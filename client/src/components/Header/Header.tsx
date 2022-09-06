@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
+// icons
+import SearchIconImage from 'assets/images/SearchIcon.svg';
 
 const Inner = styled.div`
   width: 1000px;
@@ -36,6 +38,44 @@ const SecondMenuUl = styled.ul`
   display: flex;
   position: absolute;
   right: 0;
+`;
+const SearchContainer = styled.div`
+  display: flex;
+  /* background-color: pink; */
+  margin: 0 auto;
+  position: relative;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* z-index: 2; */
+  flex-direction: row-reverse;
+`;
+const SearchInput = styled.input.attrs({
+  type: 'text',
+})`
+  width: 30px;
+  /* height: 0px; */
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: width 0.5s;
+  /* font-size: 15px; */
+  &:focus {
+    width: 100%;
+  }
+`;
+const SearchIcon = styled.div<{ color: string }>`
+  width: 30px;
+  height: 30px;
+  /* background-color: ${(props) => (props.color ? props.color : 'yellow')}; */
+  background-image: url(${SearchIconImage});
+  background-repeat: no-repeat;
+  background-size: 30px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* right: 5px; */
+  margin: auto 0;
 `;
 const SecondMenuLi = styled.li`
   list-style: none;
@@ -116,6 +156,24 @@ const DropItemUl = styled.ul`
 `;
 
 function Header() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const SearchClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+  const SearchFocus = () => {
+    // focus했을때
+    if (inputRef.current) {
+      inputRef.current.setAttribute('placeholder', '통합검색');
+    }
+  };
+  const SearchBlur = () => {
+    // focus에 때었을때
+    if (inputRef.current) {
+      inputRef.current.setAttribute('placeholder', '');
+    }
+  };
   return (
     <HContainer>
       <Inner>
@@ -123,6 +181,14 @@ function Header() {
           <Logo className="logo">AnsanTrip</Logo>
         </LinkLogo>
         <SecondMenuUl>
+          <SearchContainer onClick={SearchClick}>
+            <SearchInput
+              ref={inputRef}
+              onFocus={SearchFocus}
+              onBlur={SearchBlur}
+            />
+            <SearchIcon color="red" />
+          </SearchContainer>
           <SecondMenuLi>
             <StyleLink to="/login">로그인</StyleLink>
           </SecondMenuLi>
