@@ -3,11 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
+//component
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
+import { Container } from 'styles/Common';
+
 const RegisterContainer = styled.div`
   border: 2px solid red;
   height: 500px;
   display: flex;
   flex-direction: column;
+  margin-top: 150px;
 `;
 const FormRegister = styled.form`
   border: 2px solid blue;
@@ -87,22 +93,22 @@ function RegisterPage() {
         }
         break;
       default:
-        if (registerPw === registerPwCheck) { //비밀번호 일치시
+        if (registerPw === registerPwCheck) {
+          //비밀번호 일치시
           let body = {
             name: registerName,
             email: registerId,
-            password: registerPw
-          }
+            password: registerPw,
+          };
           console.log('비밀번호 일치');
-          axios.post('/api/users/register', body)
-          .then((res) => {
-            if(res.data.success){
+          axios.post('/api/users/register', body).then((res) => {
+            if (res.data.success) {
               navigate('/login');
-            } else{
+            } else {
               console.log('회원가입실패');
               console.log(res);
             }
-          })
+          });
         } else {
           console.log('비밀번호 불일치');
         }
@@ -110,39 +116,43 @@ function RegisterPage() {
   };
 
   return (
-    <RegisterContainer>
-      <FormRegister onSubmit={RegisterOnSubmit}>
-        <InputRegister
-          ref={FocusName}
-          type="text"
-          placeholder="이름"
-          value={registerName}
-          onChange={NameChangeHandler}
-        />
-        <InputRegister
-          ref={FocusId}
-          type="email"
-          placeholder="아이디"
-          value={registerId}
-          onChange={IdChangeHandler}
-        />
-        <InputRegister
-          ref={FocusPw}
-          type="password"
-          placeholder="비밀번호"
-          value={registerPw}
-          onChange={PwChangeHandler}
-        />
-        <InputRegister
-          ref={FocusPwCheck}
-          type="password"
-          placeholder="비밀번호 확인"
-          value={registerPwCheck}
-          onChange={PwCheckChangeHandler}
-        />
-        <ButtonRegister>회원가입</ButtonRegister>
-      </FormRegister>
-    </RegisterContainer>
+    <Container>
+      <Header />
+      <RegisterContainer>
+        <FormRegister onSubmit={RegisterOnSubmit}>
+          <InputRegister
+            ref={FocusName}
+            type="text"
+            placeholder="이름"
+            value={registerName}
+            onChange={NameChangeHandler}
+          />
+          <InputRegister
+            ref={FocusId}
+            type="email"
+            placeholder="아이디"
+            value={registerId}
+            onChange={IdChangeHandler}
+          />
+          <InputRegister
+            ref={FocusPw}
+            type="password"
+            placeholder="비밀번호"
+            value={registerPw}
+            onChange={PwChangeHandler}
+          />
+          <InputRegister
+            ref={FocusPwCheck}
+            type="password"
+            placeholder="비밀번호 확인"
+            value={registerPwCheck}
+            onChange={PwCheckChangeHandler}
+          />
+          <ButtonRegister>회원가입</ButtonRegister>
+        </FormRegister>
+      </RegisterContainer>
+      <Footer />
+    </Container>
   );
 }
 

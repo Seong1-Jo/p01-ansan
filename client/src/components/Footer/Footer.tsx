@@ -6,6 +6,7 @@ const Container = styled.div`
   border-top: 1px solid #c8c8c8;
   color: #fff;
   font-size: 16px;
+  margin-top: 50px;
 `;
 const FootInner = styled.div`
   padding: 10px 0 20px 0;
