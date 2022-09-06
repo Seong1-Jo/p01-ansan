@@ -96,7 +96,7 @@ const SecondMenuLi = styled.li`
   }
 `;
 const StyleLink = styled(Link)`
-  background-color: white;
+  background-color: #fff;
   display: block;
   padding: 11px 16px;
   text-decoration: none;
@@ -128,16 +128,18 @@ const FirstMenuIi = styled.li`
   list-style: none;
   &:hover ${FMenuDropTitle} {
     // li에 해야 drop다운까지 hover가 된다.
-    color: red;
-    background-color: blue;
+    /* color: red; */
+    /* background-color: blue; */
+    border-bottom: 2px solid #494949;
   }
   &:hover ${FMenuDropList} {
     display: block; //hover를 하면 none했던것이 블록으로바뀌며화면에 출력된다.
+    border-bottom: 1px solid #e5e5e5;
   }
 `;
 
 const FMenuDropItem = styled.div`
-  background-color: red;
+  background-color: #fff;
   height: 300px;
   & > ${Inner} {
     // & > 바로 아래자식에게만적용!
@@ -149,12 +151,15 @@ const DropTitle = styled.div`
   background-color: white;
 `;
 const DropItemUl = styled.ul`
-  background-color: aliceblue;
+  background-color: #fff;
   position: absolute;
   left: 30%;
   font-size: 30px;
+  border-left: 1px solid #e5e5e5;
 `;
-
+const DropItemLi = styled.li`
+  list-style: none;
+`;
 function Header() {
   const inputRef = useRef<HTMLInputElement>(null);
   const SearchClick = () => {
@@ -204,8 +209,12 @@ function Header() {
                 <Inner>
                   <DropTitle>안산</DropTitle>
                   <DropItemUl>
-                    <li>안산소개</li>
-                    <li>행사</li>
+                    <DropItemLi>
+                      <StyleLink to="/intro">안산소개</StyleLink>
+                    </DropItemLi>
+                    <DropItemLi>
+                      <StyleLink to="/">행사</StyleLink>
+                    </DropItemLi>
                   </DropItemUl>
                 </Inner>
               </FMenuDropItem>
