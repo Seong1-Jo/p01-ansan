@@ -13,9 +13,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 // images
-import Slide1 from 'assets/images/waterfall.jpg';
-import Slide2 from 'assets/images/seoul01.jpg';
-import Slide3 from 'assets/images/city01.jpg';
+import Slide1 from 'assets/images/ansanWaterfall.jpg';
+import Slide2 from 'assets/images/ansanStreet.jpg';
+import Slide3 from 'assets/images/seonghoMuseum.jpg';
 
 import { Container } from 'styles/Common';
 
@@ -63,13 +63,13 @@ function MainPage() {
           // onSlideChange={() => console.log('슬라이드')}
         >
           <SwiperSlide>
-            <MainImage src={Slide1} alt="메인이미지1" />
+            <MainImage src={Slide1} alt="노적봉폭포" />
           </SwiperSlide>
           <SwiperSlide>
-            <MainImage src={Slide2} alt="메인이미지2" />
+            <MainImage src={Slide2} alt="안산중앙동거리" />
           </SwiperSlide>
           <SwiperSlide>
-            <MainImage src={Slide3} alt="메인이미지3" />
+            <MainImage src={Slide3} alt="성호박물관" />
           </SwiperSlide>
         </StyledSwiper>
         <MainPageLogo>Brovo Ansan</MainPageLogo>

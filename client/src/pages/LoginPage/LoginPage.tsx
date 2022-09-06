@@ -12,7 +12,6 @@ import { Container } from 'styles/Common';
 const LoginContainer = styled.div`
   /* margin: 0 auto; //가운데 정렬 */
   //회원가입 스타일 컴포넌트와 겹침!
-  border: 2px solid red;
   height: 500px;
   display: flex;
   flex-direction: column;
@@ -21,7 +20,7 @@ const LoginContainer = styled.div`
 
 const FormLogin = styled.form`
   //회원가입 스타일 컴포넌트와 겹침!
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   /* width: 00px; */
   height: 400px;
   margin: auto;

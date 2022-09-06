@@ -9,14 +9,13 @@ import Footer from 'components/Footer/Footer';
 import { Container } from 'styles/Common';
 
 const RegisterContainer = styled.div`
-  border: 2px solid red;
   height: 500px;
   display: flex;
   flex-direction: column;
   margin-top: 150px;
 `;
 const FormRegister = styled.form`
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   width: 600px;
   height: 400px;
   margin: auto; //가운데 정렬
