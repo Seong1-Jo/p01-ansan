@@ -1,25 +1,34 @@
 import React, { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar } from 'swiper'; 
+import { Navigation, Pagination, Scrollbar, Autoplay } from 'swiper'; //modules
+import axios from 'axios';
+import styled from 'styled-components';
 
+//component
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
-import axios from 'axios';
-import styled from 'styled-components';
-
+// icons
 import SearchIconImage from 'assets/images/SearchIcon.svg';
+// images
+import Slide1 from 'assets/images/waterfall.jpg';
+import Slide2 from 'assets/images/seoul01.jpg';
+import Slide3 from 'assets/images/city01.jpg';
 
 import { Container } from 'styles/Common';
 
+const Main = styled.div`
+  margin-top: 150px;
+`;
+
 const StyledSwiper = styled(Swiper)`
-   /* width: 100px; */
-  height: 100px; 
+  /* height: 100px; */
   background-color: silver;
-  /* direction: 'vertical'; */
+  /* position: absolute; */
 `;
 
 const SearchContainer = styled.div`
@@ -59,11 +68,9 @@ const SearchIcon = styled.div<{ color: string }>`
 `;
 
 function MainPage() {
-
   useEffect(() => {
-    axios.get('/api/hello')
-    .then(res => console.log(res))
-  },[])
+    axios.get('/api/hello').then((res) => console.log(res));
+  }, []);
   const inputRef = useRef<HTMLInputElement>(null);
   const SearchClick = () => {
     if (inputRef.current) {
@@ -84,30 +91,41 @@ function MainPage() {
   };
   return (
     <Container>
-      <StyledSwiper
-        modules={[Navigation, Pagination, Scrollbar]}
-        spaceBetween={1}
-        slidesPerView={1}
-        // onSlideChange={() => console.log('슬라이드')}
-        navigation
-        // pagination={{clickable: true}}
-        // scrollbar={{ draggable: true }}
-        direction='vertical'
-      >
-        <SwiperSlide>slide 1</SwiperSlide>
-        <SwiperSlide>slide 2</SwiperSlide>
-        <SwiperSlide>slide 3</SwiperSlide>
-        <SwiperSlide>slide 4</SwiperSlide>
-        <SwiperSlide>slide 3</SwiperSlide>
-        <SwiperSlide>slide 4</SwiperSlide>
-        <SwiperSlide>slide 3</SwiperSlide>
-        <SwiperSlide>slide 4</SwiperSlide>
-      </StyledSwiper>
-      메인페이지
-      <SearchContainer onClick={SearchClick}>
-        <SearchInput ref={inputRef} onFocus={SearchFocus} onBlur={SearchBlur} />
-        <SearchIcon color="green" />
-      </SearchContainer>
+      <Header />
+      <Main>
+        <StyledSwiper
+          modules={[Navigation, Pagination, Scrollbar, Autoplay]}
+          spaceBetween={1}
+          slidesPerView={1}
+          navigation
+          autoplay={{ delay: 3000, disableOnInteraction: false }} //수동시 멈춤 현상 취소
+          loop={true} //무한루프
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          // direction="vertical"
+          // onSlideChange={() => console.log('슬라이드')}
+        >
+          <SwiperSlide>
+            <img src={Slide1} alt="메인이미지1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={Slide2} alt="메인이미지2" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={Slide3} alt="메인이미지3" />
+          </SwiperSlide>
+        </StyledSwiper>
+        메인페이지
+        <SearchContainer onClick={SearchClick}>
+          <SearchInput
+            ref={inputRef}
+            onFocus={SearchFocus}
+            onBlur={SearchBlur}
+          />
+          <SearchIcon color="green" />
+        </SearchContainer>
+      </Main>
+      <Footer />
     </Container>
   );
 }
