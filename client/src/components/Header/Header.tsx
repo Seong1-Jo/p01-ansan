@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Inner = styled.div`
-  /* background-color: orange; */
   width: 1000px;
   margin: 0 auto; //가운데 정렬
   position: relative;
@@ -13,8 +12,11 @@ const HContainer = styled.header`
   color: #333;
   font-size: 16px;
   font-weight: 700;
+  position: fixed;
+  z-index: 9;
+  width: 100%;
   border-bottom: 1px solid #c8c8c8;
-  /* background-color: #c3c6ca; */
+  background-color: #ffffff;
   & > ${Inner} {
     // & > 바로 아래자식에게만적용!
     height: 150px;
