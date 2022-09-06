@@ -68,7 +68,7 @@ const FirstMenuUl = styled.ul`
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 1; // 하면 드롭다운이 맨위에 있게된다.
+  z-index: 3; // 높게하면 드롭다운이 맨위에 있게된다.
 `;
 
 const FMenuDropTitle = styled.div`
