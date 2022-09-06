@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  /* background-color: #272727; */
+  background-color: #5c5c5c;
   border-top: 1px solid #c8c8c8;
-  color: red;
+  color: #fff;
   font-size: 16px;
 `;
 const FootInner = styled.div`
   padding: 10px 0 20px 0;
+  width: 1000px;
+  margin: 0 auto;
 `;
 const FootInfo = styled.div`
   margin-top: 20px;
-  text-align: center;
 `;
 const InfoSpan = styled.span`
   margin-right: 20px;
