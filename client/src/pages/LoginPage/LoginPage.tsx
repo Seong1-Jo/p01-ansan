@@ -10,7 +10,10 @@ import Footer from 'components/Footer/Footer';
 import { Container } from 'styles/Common';
 
 const LoginContainer = styled.div`
-  margin: 0 auto; //가운데 정렬
+  /* margin: 0 auto; //가운데 정렬 */
+  //회원가입 스타일 컴포넌트와 겹침!
+  border: 2px solid red;
+  height: 500px;
   display: flex;
   flex-direction: column;
   margin-top: 150px;
@@ -19,25 +22,21 @@ const LoginContainer = styled.div`
 const FormLogin = styled.form`
   //회원가입 스타일 컴포넌트와 겹침!
   border: 2px solid blue;
-  /* width: 800px; */
-  height: 500px;
+  /* width: 00px; */
+  height: 400px;
+  margin: auto;
+  text-align: center;
 `;
-const InputLogin = styled.input.attrs({
-  type: 'email',
-  placeholder: '아이디',
-})`
-  width: 50%;
-`;
-const InputPassword = styled.input.attrs({
-  type: 'password',
-  placeholder: '비밀번호',
-})`
-  width: 50%;
+const InputLogin = styled.input`
+  width: 70%;
+  height: 40px;
+  margin-bottom: 30px;
 `;
 const ButtonLogin = styled.button.attrs({
   type: 'submit',
 })`
   width: 50%;
+  height: 10%;
 `;
 function LoginPage() {
   const navigate = useNavigate();
@@ -69,8 +68,18 @@ function LoginPage() {
       <Header />
       <LoginContainer>
         <FormLogin onSubmit={LoginOnSubmit}>
-          <InputLogin value={loginId} onChange={LoginIdChange} />
-          <InputPassword value={loginPw} onChange={LoginPwChange} />
+          <InputLogin
+            type="text"
+            placeholder="아이디"
+            value={loginId}
+            onChange={LoginIdChange}
+          />
+          <InputLogin
+            type="password"
+            placeholder="비밀번호"
+            value={loginPw}
+            onChange={LoginPwChange}
+          />
           <ButtonLogin>로그인</ButtonLogin>
         </FormLogin>
       </LoginContainer>

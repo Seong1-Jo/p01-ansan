@@ -22,16 +22,16 @@ const FormRegister = styled.form`
   margin: auto; //가운데 정렬
   text-align: center; //자식 가운데 정렬!
 `;
+const InputRegister = styled.input`
+  width: 70%;
+  height: 40px;
+  margin-bottom: 30px;
+`;
 const ButtonRegister = styled.button.attrs({
   type: 'submit',
 })`
   width: 70%;
   height: 30px;
-`;
-const InputRegister = styled.input`
-  width: 70%;
-  height: 40px;
-  margin-bottom: 30px;
 `;
 
 function RegisterPage() {
