@@ -72,7 +72,7 @@ function MainPage() {
             <MainImage src={Slide3} alt="성호박물관" />
           </SwiperSlide>
         </StyledSwiper>
-        <MainPageLogo>Brovo Ansan</MainPageLogo>
+        <MainPageLogo>Bravo Ansan</MainPageLogo>
       </Main>
       <Footer />
     </Container>

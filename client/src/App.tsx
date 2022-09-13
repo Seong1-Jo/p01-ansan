@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import MainPage from 'pages/MainPage/MainPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
+import IntroPage from 'pages/MeunPage/AnsanPage/IntroPage';
+
 import Auth from './hoc/auth';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -17,6 +19,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/intro" element={<IntroPage />} />
       </Routes>
     </BrowserRouter>
   );
