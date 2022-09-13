@@ -26,6 +26,6 @@
 
 ### Back-End
 
-- Use Clone coding (클론코딩이용 - 실행조건 최상위에서 npm run dev)
+- Use Clone coding (클론코딩이용 - 실행 cd server > npm run dev)
 - MongoDB
 - Nodejs
