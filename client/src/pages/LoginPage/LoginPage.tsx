@@ -64,7 +64,7 @@ function LoginPage() {
   };
   return (
     <Container>
-      <Header />
+      {/* <Header /> */}
       <LoginContainer>
         <FormLogin onSubmit={LoginOnSubmit}>
           <InputLogin
@@ -82,7 +82,7 @@ function LoginPage() {
           <ButtonLogin>로그인</ButtonLogin>
         </FormLogin>
       </LoginContainer>
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   );
 }

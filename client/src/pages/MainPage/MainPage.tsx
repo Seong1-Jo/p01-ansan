@@ -16,7 +16,7 @@ import 'swiper/css/scrollbar';
 import Slide1 from 'assets/images/ansanWaterfall.jpg';
 import Slide2 from 'assets/images/ansanStreet.jpg';
 import Slide3 from 'assets/images/seonghoMuseum.jpg';
-
+//common css
 import { Container } from 'styles/Common';
 
 const Main = styled.div`
@@ -48,7 +48,7 @@ function MainPage() {
   }, []);
   return (
     <Container>
-      <Header />
+      {/* <Header /> */}
       <Main>
         <StyledSwiper
           modules={[Navigation, Pagination, Scrollbar, Autoplay]}
@@ -74,7 +74,7 @@ function MainPage() {
         </StyledSwiper>
         <MainPageLogo>Bravo Ansan</MainPageLogo>
       </Main>
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   );
 }

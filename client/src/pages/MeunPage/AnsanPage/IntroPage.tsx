@@ -52,7 +52,7 @@ const AnsanText = styled.p`
 function IntroPage() {
   return (
     <Container>
-      <Header />
+      {/* <Header /> */}
       <MainContainer>
         <IntroContainer>
           <ImageContainer>
@@ -79,7 +79,7 @@ function IntroPage() {
           </TextContainer>
         </IntroContainer>
       </MainContainer>
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   );
 }

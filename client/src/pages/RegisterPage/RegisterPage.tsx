@@ -116,7 +116,7 @@ function RegisterPage() {
 
   return (
     <Container>
-      <Header />
+      {/* <Header /> */}
       <RegisterContainer>
         <FormRegister onSubmit={RegisterOnSubmit}>
           <InputRegister
@@ -150,7 +150,7 @@ function RegisterPage() {
           <ButtonRegister>회원가입</ButtonRegister>
         </FormRegister>
       </RegisterContainer>
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   );
 }
